@@ -1,0 +1,29 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js caches
+/.next/dev/
+/.next/cache/
+/out/
+
+# logs
+stderr.log
+*.log
+
+# misc
+.DS_Store
+*.pem
+
+# env
+.env*
+.vercel
