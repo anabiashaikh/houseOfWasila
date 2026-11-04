@@ -27,3 +27,4 @@ stderr.log
 # env
 .env*
 .vercel
+*.zip
