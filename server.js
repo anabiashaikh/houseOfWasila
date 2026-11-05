@@ -1,3 +1,19 @@
+const http = require('http');
+const origEmit = http.Server.prototype.emit;
+http.Server.prototype.emit = function (event, ...args) {
+  if (event === 'request') {
+    const res = args[1];
+    const origSetHeader = res.setHeader;
+    res.setHeader = function (name, value) {
+      if (typeof name === 'string' && name.toLowerCase() === 'cache-control') {
+        return origSetHeader.call(this, name, 'no-store, no-cache, must-revalidate, max-age=0');
+      }
+      return origSetHeader.apply(this, arguments);
+    };
+  }
+  return origEmit.apply(this, arguments);
+};
+
 const path = require('path')
 
 const dir = path.join(__dirname)
